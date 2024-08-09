@@ -10,6 +10,7 @@ import cookieParser from "cookie-parser";
 // routers
 import bookmarkRouter from "./routes/bookmarkRouter.js";
 import authRouter from "./routes/authRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 // middleware
 import errorHandler from "./middleware/errorHandler.js";
@@ -24,8 +25,11 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("hello world");
 });
-
-app.use("/api/v1/bookmarks", bookmarkRouter);
+app.get("/api/v1/test", (req, res) => {
+  res.json({ msg: "test route" });
+});
+app.use("/api/v1/bookmarks", authenticateUser, bookmarkRouter);
+app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/auth", authRouter);
 
 app.use("*", (req, res) => {

@@ -23,11 +23,11 @@ const BookmarkSchema = new mongoose.Schema(
       enum: Object.values(GO_TO_STATUS),
       default: GO_TO_STATUS.WANT_TO_GO,
     },
-    // connect user with bookmark
-    // createdBy: {
-    //   type: mongoose.Types.ObjectId,
-    //   ref: "User",
-    // },
+    //connect user with bookmark
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

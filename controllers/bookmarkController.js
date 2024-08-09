@@ -2,11 +2,12 @@ import Bookmark from "../models/BookmarkModel.js";
 import { StatusCodes } from "http-status-codes";
 
 export const getAllBookmarks = async (req, res) => {
-  const bookmarks = await Bookmark.find({});
+  const bookmarks = await Bookmark.find({ createdBy: req.user.userId });
   res.status(StatusCodes.OK).json({ bookmarks });
 };
 
 export const createBookmark = async (req, res) => {
+  req.body.createdBy = req.user.userId;
   const bookmark = await Bookmark.create(req.body);
   res.status(StatusCodes.CREATED).json({ bookmark });
 };

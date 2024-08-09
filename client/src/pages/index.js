@@ -8,6 +8,6 @@ export { default as Stats } from "./Stats";
 export { default as AllMarks } from "./AllMarks";
 export { default as AddMark } from "./AddMark";
 export { default as EditMark } from "./EditMark";
-export { default as deleteBookmark } from "./deleteBookmark";
+export { default as DeleteMark } from "./DeleteMark";
 export { default as Profile } from "./Profile";
 export { default as Admin } from "./Admin";
